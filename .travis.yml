@@ -1,0 +1,15 @@
+language: objective-c
+xcode_workspace: SWXMLHash.xcworkspace
+xcode_scheme: SWXMLHash
+osx_image: xcode7.1
+
+before_install:
+  - brew update; brew update
+  - brew install carthage
+
+  #- carthage bootstrap --no-build
+  #- carthage build --no-skip-current
+  - carthage update
+
+#script:
+  #- ./Scripts/build.sh
