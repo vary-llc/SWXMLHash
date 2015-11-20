@@ -50,6 +50,10 @@ public class SWXMLHash {
         return SWXMLHash(opts)
     }
 
+    public func parse(xml: String, encoding: UInt) -> XMLIndexer {
+        return parse((xml as NSString).dataUsingEncoding(encoding)!)
+    }
+    
     public func parse(xml: String) -> XMLIndexer {
         return parse((xml as NSString).dataUsingEncoding(NSUTF8StringEncoding)!)
     }
