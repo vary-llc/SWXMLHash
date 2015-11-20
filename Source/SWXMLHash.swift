@@ -49,15 +49,15 @@ public class SWXMLHash {
         configAction(opts)
         return SWXMLHash(opts)
     }
-
-    public func parse(xml: String, encoding: UInt) -> XMLIndexer {
-        return parse((xml as NSString).dataUsingEncoding(encoding)!)
-    }
     
     public func parse(xml: String) -> XMLIndexer {
         return parse((xml as NSString).dataUsingEncoding(NSUTF8StringEncoding)!)
     }
 
+    public func parse(xml: String, encoding: UInt) -> XMLIndexer {
+        return parse((xml as NSString).dataUsingEncoding(encoding)!)
+    }
+    
     public func parse(data: NSData) -> XMLIndexer {
         let parser: SimpleXmlParser = options.shouldProcessLazily ? LazyXMLParser(options) : XMLParser(options)
         return parser.parse(data)
@@ -73,6 +73,10 @@ public class SWXMLHash {
         return SWXMLHash().parse(xml)
     }
 
+    class public func parse(xml: String, encoding: UInt) -> XMLIndexer {
+        return SWXMLHash().parse(xml, encoding: encoding)
+    }
+    
     /**
     Method to parse XML passed in as an NSData instance.
 
